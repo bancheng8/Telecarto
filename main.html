@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>main.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+	<script src="bootstrap/jquery-1.11.2.min.js"></script>
+	<script src="bootstrap/bootstrap.min.js"></script>
+	<script src="bootstrap/jQuery.Form.js"></script>
+	<script src="js/control.js"></script>
+	
+  </head>
+  
+  <body>
+  	<div class="container">
+  	<div class="row">
+  		<div class="col-md-12 page-header"><span class="glyphicon glyphicon-star " style="color:red;font-size:30px">坐标转换工具(GCJ|百度-->WGS84)</span>
+		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-md-1">
+            <label class="lead">
+               	 上传Excel
+            </label>
+  		</div>
+  		<div class="col-md-4">
+		    <form  method="post" enctype="multipart/form-data" class="form-inline">
+		        <div class="form-group">
+					<input type="file" name="file"/>
+		        </div>
+		        <input id="updata" type="submit" class="btn btn-success" value="上传"/>
+		    </form>
+			
+		</div>
+  		<div class="col-md-2">
+            <label class="lead">
+               	<span class="glyphicon glyphicon-paperclip" style="color:green">第一步</span>
+            </label>
+  		</div>
+		
+		<div class="col-md-3">
+			<img id="upload" src="pic/ajax-loader.gif" style="display:none"/>
+			<span id="status" class="glyphicon glyphicon-ok" style="color:red;display:none;font-size:20px;"></span>
+		</div>
+		<div class="col-md-2">
+			<span class="glyphicon glyphicon-info-sign" style="font-size:20px;color:red"><strong >格式：xlsx</strong></span>
+		</div>
+  	</div>
+	<hr>
+		<div class="row ">
+			<div class="col-md-2">
+				<label class="lead" ><span class="glyphicon glyphicon-folder-open"></span> excel总字段</label>
+				<div style="width:150px;height:400px;overflow-y:auto;overflow-x:hidden" >
+					<table class="table table-bordered table-condensed table-responsive" id="keys">
+					</table>
+				</div>
+			</div>
+			<div class="col-md-2">
+	            <label class="lead">
+	               	<span class="glyphicon glyphicon-paperclip" style="color:green">第二步</span>
+	            </label>
+				<button id="ladd" class="btn btn-primary glyphicon glyphicon-triangle-right btn-block btn-xs"></button>
+				<button id="lremove" class="btn btn-primary glyphicon glyphicon-remove btn-block btn-xs"></button>
+				<p style="margin:20px 0 0 0;color:red;font-size:18px;">
+					<strong><span class="glyphicon glyphicon-pushpin">先选择<u>经度</u>字段</span></strong>
+					<strong><span class="glyphicon glyphicon-pushpin">再选择<u>纬度</u>字段</span></strong>
+				</p>
+				
+				<ul class="nav nav-pills list-group nav nav-tabs" style="color:blue;margin:40px 0 0 0">
+					<span class="glyphicon glyphicon-cog"/>
+					<strong style="margin:40px 0 0 0">请选择原数据坐标系，默认为GCJ</strong>
+					<hr>
+					<li class="list-group-item" ><input type="radio" id="gcj" name="ch" checked="checked"/>高德/GCJ坐标</li>
+					<li class="list-group-item"><input type="radio" id="baidu" name="ch" />百度坐标</li>
+				</ul>
+				
+			</div>
+			<div class="col-md-2">
+				<label class="lead" ><span class="glyphicon glyphicon-star"></span>经纬度字段</label>
+				<div style="width:150px;height:400px;">
+					<table class="table table-bordered table-condensed table-responsive" id="ll">
+					</table>
+				</div>
+			</div>
+			<div class="col-md-2">
+				 <label class="lead">
+	               	<span class="glyphicon glyphicon-paperclip" style="color:green">第三步</span>
+	            </label>
+				<button id="oadd" class="btn btn-primary glyphicon glyphicon-triangle-right btn-block btn-xs"></button>
+				<button id="oremove" class="btn btn-primary glyphicon glyphicon-remove btn-block btn-xs"></button>
+				<p style="margin:20px 0 0 0;color:red;font-size:18px;">
+					<strong><span class="glyphicon glyphicon-pushpin">可添加<u>多个</u>字段</span></strong>
+				</p>
+			</div>
+			<div class="col-md-2">
+				<label class="lead" ><span class="glyphicon glyphicon-cog"></span> 可添加字段</label>
+				<div style="width:150px;height:200px;">
+					<table class="table table-bordered table-condensed table-responsive" id="opt">
+					</table>
+				</div>
+				<img id="loading" src="pic/loading.gif" style="width:150px;height:50px;display:none"/>
+			</div>
+			<div class="col-md-2 ">
+				 <label class="lead">
+	               	<span class="glyphicon glyphicon-paperclip" style="color:green">第四步</span>
+	            </label>
+				<button id="transfer" class="btn btn-primary btn-block" >转换<span class="glyphicon glyphicon-send"></span></button>	
+				<a id="downfile" class="navbar-text navbar-right">
+					<h3><span class="glyphicon glyphicon-arrow-down"></span>点击下载</h3>
+				</a>
+			</div>
+		</div>
+	</div>
+    </body>
+</html>
