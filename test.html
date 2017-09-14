@@ -17,9 +17,9 @@
      */
     function getQueryString(name){
         var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-        var r = window.location.search.substr(1).match(reg);
-	    alert(window.location.search);
-	    alert(window.location.search.substr(1));
+        var r = window.location.search.substr(1).substr(1).match(reg);
+// 	    alert(window.location.search);
+// 	    alert(window.location.search.substr(1));
         if (r != null) {
             return unescape(r[2]);
         }
