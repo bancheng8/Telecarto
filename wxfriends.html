@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>微信小程序</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script src='https://code.jquery.com/jquery-1.12.4.js' type='text/javascript'></script>
+  </head>
+  <script>
+  
+	$(function(){
+			/**
+     * 获取当前的参数值
+     * @param {Object} name
+     */
+    function getQueryString(name){
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).split('?')[1].match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
+	})
+	var ygroup=getQueryString('group');
+	$.ajax({
+		url:'http://116.196.119.191:8080/OurWeb/showAllByGroup.do',
+		data:{ygroup:ygroup},
+		type:'post',
+		success:function(data){
+			console.log(data);
+		}
+	})
+  </script>
+  <body>
+    
+  </body>
+</html>
