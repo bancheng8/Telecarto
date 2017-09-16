@@ -25,10 +25,10 @@
         }
         return null;
     }
-	var ygroup=getQueryString('group');
+	var data=getQueryString('data');
 	$.ajax({
-		url:'http://116.196.119.191:8080/OurWeb/showAllByGroup.do',
-		data:{ygroup:ygroup},
+		url:'http://116.196.119.191:8080/OurWeb/location.do',
+		data:{data:data},
 		type:'post',
 		success:function(data){
 			console.log(data);
